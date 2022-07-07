@@ -12,12 +12,14 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
+import pl.droidsonroids.gif.GifImageView;
+
 public class CustomProgressDialog {
 
     private static Dialog dialog;
-    private static TextView text;
+    private static GifImageView gif;
 
-    public static void show(Context context) {
+    public static void showDefault(Context context) {
         if (dialog != null) {
             hide();
         }
@@ -25,29 +27,52 @@ public class CustomProgressDialog {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.setCancelable(true);
+        Window window=dialog.getWindow();
+        window.setDimAmount(0.85f);
         dialog.setCanceledOnTouchOutside(false);
         dialog.getWindow().setGravity(Gravity.CENTER);
         dialog.setContentView(R.layout.progressbar);
+        gif = dialog.findViewById(R.id.gif);
+        gif.setImageResource(R.drawable.loading_color);
+        dialog.show();
+    }
 
-        text = dialog.findViewById(R.id.text_wait);
+    public static void showCustomLoading(Context context, int drawableGif) {
+        if (dialog != null) {
+            hide();
+        }
+        dialog = new Dialog(context, R.style.Progress_Dialog_Horizontal);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setCancelable(true);
+        Window window=dialog.getWindow();
+        window.setDimAmount(0.85f);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.getWindow().setGravity(Gravity.CENTER);
+        dialog.setContentView(R.layout.progressbar);
+        gif = dialog.findViewById(R.id.gif);
+        gif.setImageResource(drawableGif);
+        dialog.show();
+    }
 
-//        Animation animFadeIn = AnimationUtils.loadAnimation(dialog.getContext(), R.anim.animation_fadein);
-//        text.startAnimation(animFadeIn);
+    public static void createCustomLoading(Context context, int drawableGif, int height, int width) {
+        if (dialog != null) {
+            hide();
+        }
+        dialog = new Dialog(context, R.style.Progress_Dialog_Horizontal);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setCancelable(true);
+        Window window=dialog.getWindow();
+        window.setDimAmount(0.85f);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.getWindow().setGravity(Gravity.CENTER);
+        dialog.setContentView(R.layout.progressbar);
+        gif = dialog.findViewById(R.id.gif);
+        gif.getLayoutParams().height = height;
+        gif.getLayoutParams().width = width;
 
-//        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                Animation animFadeOut = AnimationUtils.loadAnimation(dialog.getContext(), R.anim.fade_out);
-//                text.startAnimation(animFadeOut);
-//                new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        Animation animFadeIn = AnimationUtils.loadAnimation(dialog.getContext(), R.anim.animation_fadein);
-//                        text.startAnimation(animFadeIn);
-//                    }
-//                }, 3000);
-//            }
-//        }, 3000);
+        gif.setImageResource(drawableGif);
         dialog.show();
     }
 

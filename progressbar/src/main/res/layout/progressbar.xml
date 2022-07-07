@@ -7,18 +7,9 @@
     android:orientation="vertical">
 
     <pl.droidsonroids.gif.GifImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:src="@drawable/boys" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Please wait.."
-        android:textColor="#E4BE86"
-        android:id="@+id/text_wait"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
+        android:id="@+id/gif"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/loading_color" />
 
 </LinearLayout>
