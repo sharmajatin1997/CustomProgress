@@ -22,11 +22,11 @@ public class MainActivity extends AppCompatActivity {
 
         textView = findViewById(R.id.text);
         textView1 = findViewById(R.id.text1);
-        textView2 = findViewById(R.id.text2);
+//        textView2 = findViewById(R.id.text2);
 
         textView.setOnClickListener(view -> {
             /** start progress*/
-            CustomProgressDialog.showDefault(this);
+            CustomProgressDialog.showDefault(this,0.6f);
             new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         textView1.setOnClickListener(view -> {
             /** start progress*/
-            CustomProgressDialog.showCustomLoading(this, R.drawable.doctor_style);
+            CustomProgressDialog.showCustomLoading(this, R.drawable.doctor_style,0.6f);
             new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -49,17 +49,17 @@ public class MainActivity extends AppCompatActivity {
             }, 5000);
         });
 
-        textView2.setOnClickListener(view -> {
-            /** start progress*/
-            CustomProgressDialog.createCustomLoading(this, R.drawable.double_style, 250, 250);
-            new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    /**  hide progress*/
-                    CustomProgressDialog.hide();
-                }
-            }, 5000);
-        });
+//        textView2.setOnClickListener(view -> {
+//            /** start progress*/
+//            CustomProgressDialog.createCustomLoading(this, R.drawable.double_style, 250, 250);
+//            new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//                    /**  hide progress*/
+//                    CustomProgressDialog.hide();
+//                }
+//            }, 5000);
+//        });
     }
 
 
