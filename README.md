@@ -16,7 +16,7 @@ allprojects {
   '''gradle
   
  	dependencies {
-	        implementation 'com.github.SharmaJatin1997:CustomProgress:1.0.1'
+	        implementation 'com.github.sharmajatin1997:CustomProgress:1.0.1'
 	}
 
  
